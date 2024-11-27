@@ -1,0 +1,35 @@
+//create new file
+		File f = new File("D:/Selenium.txt");
+		FileWriter fw = new FileWriter(f);
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write("iam so lazy to ateend class");
+		bw.newLine();
+		bw.write("But i want job in top mnc");
+		bw.newLine();
+		bw.write("With 20L package");
+		bw.flush();
+		bw.close();
+==================================================================
+File f = new File("D:/primus.txt");
+	FileWriter fw = new FileWriter(f);
+	BufferedWriter bw = new BufferedWriter(fw);
+	WebDriver driver = new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.get("http://primusbank.qedgetech.com/");
+	String para1 =driver.findElement(By.xpath("(//p[@class='style7'])[2]")).getText();
+	String para2 =driver.findElement(By.xpath("(//p[@class='style7'])[3]")).getText();
+	bw.write(para1);
+	bw.newLine();
+	bw.newLine();
+	bw.write(para2);
+	bw.flush();
+	bw.close();
+	driver.quit();
+====================================================================================
+FileReader fr = new FileReader("D:/Selenium.txt");
+		BufferedReader br = new BufferedReader(fr);
+		String str="";
+		while ((str=br.readLine())!=null) {
+			Thread.sleep(500);
+			System.out.println(str);
+		}

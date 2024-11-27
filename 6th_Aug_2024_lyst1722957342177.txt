@@ -1,0 +1,45 @@
+Facebook Login Script
+-----------------------------------------------------------------------------------------------------------
+		
+		driver.get("http://facebook.com");
+		driver.findElement(By.id("email")).sendKeys("your username");
+		driver.findElement(By.id("pass")).sendKeys("your password");
+		driver.findElement(By.name("login")).click();
+
+-----------------------------------------------------------------------------------------------------------
+OrangeHRM Login Script
+-----------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		
+		driver.get("http://orangehrm.qedgetech.com/");
+		driver.findElement(By.id("txtUsername")).sendKeys("Admin");
+		driver.findElement(By.id("txtPassword")).sendKeys("Qedge123!@#");
+		driver.findElement(By.name("Submit")).click();
+		
+		driver.findElement(By.partialLinkText("Welcome")).click();
+		Thread.sleep(2000);
+		
+		driver.findElement(By.linkText("Logout")).click();
+		driver.close();
+-----------------------------------------------------------------------------------------------------------
+Flights Application Login Script
+-----------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		
+		driver.get("http://flights.qedgetech.com");
+		driver.findElement(By.name("email")).sendKeys("sureshbabu.qedge@gmail.com");
+		driver.findElement(By.name("password")).sendKeys("demo");
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+----------------------------------------------------------------------------------------------------------
+
+
+
+
+
+

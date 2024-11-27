@@ -1,0 +1,64 @@
+Script to Handle Alert
+-----------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://flights.qedgetech.com");
+		driver.findElement(By.name("email")).sendKeys("sureshbabu.qedge@gmail.com");
+		driver.findElement(By.name("password")).sendKeys("demo");		
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+			
+		driver.findElement(By.linkText("Flight Bookings")).click();
+		driver.findElement(By.linkText("Delete")).click();
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.alertIsPresent());
+		
+		String alertmsg =  driver.switchTo().alert().getText();
+		if(alertmsg.contains("Delete"))
+		{
+			driver.switchTo().alert().accept();
+		}else
+		{
+			driver.switchTo().alert().dismiss();
+		}
+------------------------------------------------------------------------------------------------------------------------
+Diff Synchronization Methods
+------------------------------------------------------------------------------------------------------------------------
+
+	1. Thread.sleep()
+	2. Implicit Wait
+	3. Explicit Wait
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

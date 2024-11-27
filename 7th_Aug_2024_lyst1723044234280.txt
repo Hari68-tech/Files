@@ -1,0 +1,58 @@
+XPath : Script using "label" property to find the element
+----------------------------------------------------------------------------------------------------------
+		
+		driver.get("http://irctc.co.in");
+		
+		//XPath
+		driver.findElement(By.xpath("//*[@label='Find Trains Disha']")).click();
+
+----------------------------------------------------------------------------------------------------------
+XPath : Script using "type" property to identify element.
+-----------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		
+		driver.get("http://flights.qedgetech.com");
+		driver.findElement(By.name("email")).sendKeys("sureshbabu.qedge@gmail.com");
+		driver.findElement(By.name("password")).sendKeys("demo");
+
+		//XPath
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+-----------------------------------------------------------------------------------------------------------
+XPath : Script using multiple properties to identify the element
+-----------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		
+		driver.get("http://flights.qedgetech.com");
+		driver.findElement(By.name("email")).sendKeys("sureshbabu.qedge@gmail.com");
+		driver.findElement(By.name("password")).sendKeys("demo");		
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		
+		driver.findElement(By.xpath("//input[@name='price_class' and @value='Business']")).click();
+-----------------------------------------------------------------------------------------------------------
+XPath : Script using multiple properties to identify the element
+-----------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		
+		driver.get("http://facebook.com");
+     List<WebElement> editlist =driver.findElements(By.xpath("//input[@type='text' or @type='password']"));
+		System.out.println(editlist.size());
+-----------------------------------------------------------------------------------------------------------
+
+		
+
+
+
+
+
+
+
+

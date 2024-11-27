@@ -1,0 +1,103 @@
+Script to capture ScreenShot of the Page
+------------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://orangehrm.qedgetech.com");
+		driver.findElement(By.id("txtUsername")).sendKeys("Admin");
+		driver.findElement(By.id("txtPassword")).sendKeys("Qedge123!@#");
+		driver.findElement(By.name("Submit")).click();
+		
+		driver.findElement(By.partialLinkText("Welcome")).click();
+		driver.findElement(By.linkText("Change Password")).click();
+		
+		// code to capture ScreenShot
+		
+		TakesScreenshot  ts = (TakesScreenshot)driver;
+		File srcfile = ts.getScreenshotAs(OutputType.FILE);
+		File destfile = new File("c:\\demo\\chgpwd_defect.bmp");
+		FileUtils.copyFile(srcfile, destfile);	
+------------------------------------------------------------------------------------------------------------------------
+Script  to scroll Window vertically for specified no. of pixels		
+-------------------------------------------------------------------------------------------------------------------------
+
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://booking.com");
+		
+		try 
+		{
+			driver.findElement(By.xpath("//button[starts-with(@aria-label,'Dismiss')]")).click();
+			
+		} catch (Exception e) 
+		{
+			System.out.println("Notification not generated...");
+		}
+		
+		
+		// code to scroll Window vertically for specified no. of pixels
+		
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,1000)");
+
+------------------------------------------------------------------------------------------------------------------------
+Script  to scroll Window upto visiblity of the specified element
+------------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://booking.com");
+		
+		try 
+		{
+			driver.findElement(By.xpath("//button[starts-with(@aria-label,'Dismiss')]")).click();
+			
+		} catch (Exception e) 
+		{
+			System.out.println("Notification not generated...");
+		}
+		
+		
+		// code to scroll Window vertically for specified no. of pixels
+		
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].scrollIntoView()", driver.findElement(By.linkText("Cities")));
+
+------------------------------------------------------------------------------------------------------------------------
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
