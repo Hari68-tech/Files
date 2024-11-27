@@ -1,0 +1,113 @@
+Reading String data from Java Console
+-----------------------------------------------------------------------------------------------------------
+
+		System.out.println("Enter your name:");
+		
+		Scanner sc = new Scanner(System.in);
+		String name = sc.nextLine();
+		System.out.println("Your name is :"+name);
+
+----------------------------------------------------------------------------------------------------------
+Reading Integer data from Java Console
+----------------------------------------------------------------------------------------------------------
+
+		int a,b;
+		
+		System.out.println("Enter First Value");
+		Scanner sc = new Scanner(System.in);
+		a = sc.nextInt();
+		
+		System.out.println("Enter Second Value");
+		b = sc.nextInt();
+		
+		System.out.println(a+b);
+----------------------------------------------------------------------------------------------------------
+Reading Boolean data from Java Console
+----------------------------------------------------------------------------------------------------------
+		
+		System.out.println("Are you Working :");
+		Scanner sc = new Scanner(System.in);
+		boolean result = sc.nextBoolean();
+		System.out.println(result);
+
+----------------------------------------------------------------------------------------------------------
+Script to print numbers from 1 - 10 using while loop
+---------------------------------------------------------------------------------------------------------
+		
+		int i = 1;
+		
+		while(i<=10)
+		{
+			System.out.println(i);
+			i = i+1;
+			
+		}
+		
+		System.out.println("End of the While Loop");
+-----------------------------------------------------------------------------------------------------------
+while loop
+-----------------------------------------------------------------------------------------------------------
+		System.out.println("Do you want to continue...");
+		
+		Scanner sc = new Scanner(System.in);
+		boolean res = sc.nextBoolean();
+		
+		while(res)
+		{
+			System.out.println("You decided to continue...");
+			System.out.println("Still do you want to continue...");
+			res = sc.nextBoolean();
+		}
+			
+		System.out.println("You decided not to continue...");
+-------------------------------------------------------------------------------------------------------
+do while loop
+--------------------------------------------------------------------------------------------------------
+		boolean res = false;
+		
+		do
+		{
+			System.out.println("Do you want to continue...");
+			Scanner sc = new Scanner(System.in);
+			res = sc.nextBoolean();
+			if(res)
+			{
+				System.out.println("You decided to continue...");
+			}
+			
+		}while(res);
+		
+		System.out.println("You decided not to continue...");	
+---------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+	

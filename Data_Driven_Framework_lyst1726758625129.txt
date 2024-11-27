@@ -1,0 +1,145 @@
+# Locators for Login
+browser = chrome
+Url = http://webapp.qedgetech.com/
+Objreset = //button[@id='btnreset']
+Objuser = //input[@id='username']
+Objpass = //input[@id='password']
+ObjLogin = //button[@id='btnsubmit']
+Objlogout = (//a[starts-with(text(),' Logout')])[2]
+ObjAlertText = //div[contains(text(),'Incorrect user ID or password')]
+ObjOk = (//button[contains(text(),'OK')])[6]
+====================================================================
+package config;
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+import org.checkerframework.common.util.report.qual.ReportCall;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Reporter;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+
+public class AppUtil {
+public static WebDriver driver;
+public static Properties conpro;
+@BeforeTest
+public static void setUp()throws Throwable
+{
+	conpro = new Properties();
+	conpro.load(new FileInputStream("./PropertyFiles/Environment.properties"));
+	if(conpro.getProperty("browser").equalsIgnoreCase("chrome"))
+	{
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+	}
+	else if(conpro.getProperty("browser").equalsIgnoreCase("firefox"))
+	{
+		driver = new FirefoxDriver();
+	}
+	else
+	{
+		Reporter.log("Browser Value is Not matching",true);
+	}
+			
+}
+@AfterTest
+public static void tearDown()
+{
+	driver.quit();
+}
+}
+==========================================================================
+package commonFunctions;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.testng.Reporter;
+
+import config.AppUtil;
+
+public class FunctionLibrary extends AppUtil {
+	//method for login
+	public static boolean adminLogin(String user,String pass) throws Throwable
+	{
+		driver.get(conpro.getProperty("Url"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.findElement(By.xpath(conpro.getProperty("Objreset"))).click();
+		driver.findElement(By.xpath(conpro.getProperty("Objuser"))).sendKeys(user);
+		driver.findElement(By.xpath(conpro.getProperty("Objpass"))).sendKeys(pass);
+		driver.findElement(By.xpath(conpro.getProperty("ObjLogin"))).click();
+		Thread.sleep(3000);
+		String Expected ="dashboard";
+		String Actual = driver.getCurrentUrl();
+		if(Actual.contains(Expected))
+		{
+			//click logout link
+			driver.findElement(By.xpath(conpro.getProperty("Objlogout"))).click();
+			Reporter.log("Valid username and password::"+Expected+"    "+Actual,true);
+			return true;
+		}
+		else
+		{
+			//captrue error message
+			String errormessage = driver.findElement(By.xpath(conpro.getProperty("ObjAlertText"))).getText();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath(conpro.getProperty("ObjOk"))).click();
+			Reporter.log(errormessage+"    "+Expected+"   "+Actual,true);
+			return false;
+		}
+	}
+
+}
+======================================================================================================
+package driverFactory;
+
+import org.testng.Reporter;
+import org.testng.annotations.Test;
+
+import commonFunctions.FunctionLibrary;
+import config.AppUtil;
+import utilities.ExcelFileUtil;
+
+public class DriverScript extends AppUtil {
+String inputpath ="./FileInput/TestData.xlsx";
+String outputpath ="./FileOutput/datadrivenResults.xlsx";
+@Test
+public void starttest() throws Throwable
+{
+	//create obejct for excel file util class
+	ExcelFileUtil xl = new ExcelFileUtil(inputpath);
+	//count no of rows in login sheet
+	int rc =xl.rowCount("Login");
+	Reporter.log("No of rows are::"+rc,true);
+	for(int i=1;i<=rc;i++)
+	{
+		String username = xl.getCellData("Login", i, 0);
+		String password = xl.getCellData("Login", i, 1);
+		//call login method from function libraray class
+		boolean res =FunctionLibrary.adminLogin(username, password);
+		if(res)
+		{
+			xl.setCellData("Login", i, 2, "Valid username and password", outputpath);
+			xl.setCellData("Login", i, 3, "pass", outputpath);
+		}
+		else
+		{
+			xl.setCellData("Login", i, 2, "Invalid username and password", outputpath);
+			xl.setCellData("Login", i, 3, "Fail", outputpath);
+		}
+		
+	}
+}
+}
+
+
+
+
+
+
+
+
+

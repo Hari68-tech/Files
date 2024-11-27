@@ -1,0 +1,57 @@
+//read path of excel file
+		FileInputStream fi = new FileInputStream("D:/Sample.xlsx");
+		//get work book
+		XSSFWorkbook wb = new XSSFWorkbook(fi);
+		//get sheet from wb
+		XSSFSheet ws =wb.getSheet("Emp");
+		//get first row from Emp sheet
+		XSSFRow row =ws.getRow(0);
+		//count no of rows in Emp sheet
+		int rc =ws.getLastRowNum();
+		System.out.println("No of rows are::"+rc);
+		//count no of cells in first row
+		int cc =row.getLastCellNum();
+		System.out.println("No of cells are::"+cc);
+		fi.close();
+		wb.close();
+==============================================================================
+// read excel path 
+		FileInputStream fi = new FileInputStream("D:/Sample.xlsx");
+		//get wb from file
+		XSSFWorkbook wb = new XSSFWorkbook(fi);
+		//get sheet from wb
+		XSSFSheet ws = wb.getSheetAt(0);
+		//count no of rows in sheet
+		int rc =ws.getLastRowNum();
+		System.out.println("No of rows are::"+rc);
+		//get six th row from sheet
+		XSSFRow row = ws.getRow(5);
+		//read each cell from row
+		XSSFCell c1 =row.getCell(0);
+		XSSFCell c2 = row.getCell(1);
+		XSSFCell c3 =row.getCell(2);
+		XSSFCell c4 =row.getCell(3);
+		String fname =c1.getStringCellValue();
+		String mname = c2.getStringCellValue();
+		String lname = c3.getStringCellValue();
+		int eid = (int) c4.getNumericCellValue();
+		System.out.println(fname+"    "+mname+"    "+lname+"    "+eid);
+		fi.close();
+=========================================================================================
+//read path of excel 
+		FileInputStream fi = new FileInputStream("D:/Sample.xlsx");
+		//get wbb from file
+		XSSFWorkbook wb = new XSSFWorkbook(fi);
+		//get sheeet from wb
+		XSSFSheet ws = wb.getSheet("Emp");
+		int rc = ws.getLastRowNum();
+		System.out.println(rc);
+		//read specific row cell data
+		String fname = ws.getRow(1).getCell(0).getStringCellValue();
+		String mname = ws.getRow(10).getCell(1).getStringCellValue();
+		String lname = ws.getRow(4).getCell(2).getStringCellValue();
+		int eid =(int) ws.getRow(11).getCell(3).getNumericCellValue();
+		System.out.println(fname+"    "+mname+"    "+lname+"    "+eid);
+		fi.close();
+		wb.close();
+

@@ -1,0 +1,133 @@
+Script to check all items present in a DropDownList are displayed in alphabetical order or not?
+------------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://amazon.in");	
+		
+		Select cat = new Select(driver.findElement(By.id("searchDropdownBox")));
+		List<WebElement> catlist = cat.getOptions();
+		
+		String cat1,cat2;
+		boolean ordered = true;
+		
+		for(int i=2;i<catlist.size();i++)
+		{
+			cat1 = catlist.get(i-1).getText();
+			cat2 = catlist.get(i).getText();
+			
+			if(cat2.compareToIgnoreCase(cat1)<0)
+			{
+				ordered = false;
+				break;
+			}
+		}
+		
+		if(ordered)
+		{
+			System.out.println("test pass");
+		}else
+		{
+			System.out.println("test fail");
+		}
+---------------------------------------------------------------------------------------------------------------------------
+A Sample DropDownList HTML Code
+-------------------------------------------------------------------------------------------------------------------------
+Choose a Car
+<select id="car" multiple>
+<option value="b">BMW</option>
+<option value="a">The Audi Q7 FutureIsAnAttitude</option>
+<option value="v">Volvo</option>
+<option>Honda</option>
+</select>
+-------------------------------------------------------------------------------------------------------------------------
+Script to select & deselect items in a DropDownList
+-------------------------------------------------------------------------------------------------------------------------		
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("file:///C:/Users/Uname/Desktop/cars.html");	
+		
+		Select carlist = new Select(driver.findElement(By.id("car")));
+		carlist.selectByVisibleText("BMW");
+		
+		Thread.sleep(2000);
+		
+		carlist.selectByValue("v");
+		
+		Thread.sleep(2000);
+		carlist.deselectAll();
+
+-------------------------------------------------------------------------------------------------------------------------
+Script to click First Link present in a Page
+-------------------------------------------------------------------------------------------------------------------------
+		
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://google.com");
+		
+		driver.findElement(By.tagName("a")).click();
+-----------------------------------------------------------------------------------------------------------------------
+Script to count all links present in a Page
+-----------------------------------------------------------------------------------------------------------------------
+		
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://google.com");
+		
+		List<WebElement> links = driver.findElements(By.tagName("a"));
+		int linkcount =  links.size();
+		System.out.println(linkcount);
+------------------------------------------------------------------------------------------------------------------------
+Script to print all link names and their redirected URLs
+------------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://google.com");
+		
+		List<WebElement> links = driver.findElements(By.tagName("a"));
+		
+		for(WebElement element : links)
+		{
+			System.out.println(element.getText());
+			System.out.println(element.getAttribute("href"));
+		}
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,223 @@
+Comparing Two Strings considering the case using  : equals()
+----------------------------------------------------------------------------------------------------------------------
+		String npwd,cpwd;
+		
+		npwd = "QEdge";
+		cpwd = "QEdge";
+		
+		boolean res =  npwd.equals(cpwd);
+		System.out.println(res);
+----------------------------------------------------------------------------------------------------------------------
+Comparing Two Strings by ignoring the case using : equalsIgnoreCase()
+---------------------------------------------------------------------------------------------------------------------
+		
+		String exptitle,acttitle;
+		
+		exptitle = "google images";
+		acttitle = "Google Images";
+		
+		boolean res = exptitle.equalsIgnoreCase(acttitle);
+		System.out.println(res);
+-------------------------------------------------------------------------------------------------------------------
+Checking a String contains another String or not using : contains()
+-------------------------------------------------------------------------------------------------------------------------
+		String expurl,acturl;
+		expurl = "gmail";
+		acturl = "https://www.google.com/intl/en-US/gmail/about/";
+		
+		boolean res =  acturl.contains(expurl);
+		System.out.println(res);
+----------------------------------------------------------------------------------------------------------------------
+contains()
+----------------------------------------------------------------------------------------------------------------------
+		String expurl,acturl;
+		expurl = "GMail";
+		acturl = "https://www.google.com/intl/en-US/gmail/about/";
+		
+		boolean res =  acturl.contains(expurl.toLowerCase());
+		System.out.println(res);
+
+--------------------------------------------------------------------------------------------------------------------
+contains()
+------------------------------------------------------------------------------------------------------------------------
+		String expurl,acturl;
+		expurl = "Gmail";
+		acturl = "https://www.google.com/intl/en-US/GMail/about/";
+		
+		boolean res =  acturl.toLowerCase().contains(expurl.toLowerCase());
+		System.out.println(res);
+-----------------------------------------------------------------------------------------------------------------------
+Capturing character value present at specified index using : charAt()
+------------------------------------------------------------------------------------------------------------------------
+		
+		String str = "Java";
+		
+		char data = str.charAt(0);
+		System.out.println(data);
+		
+output : J
+------------------------------------------------------------------------------------------------------------------------
+Capturing character value present at specified index using : charAt()
+------------------------------------------------------------------------------------------------------------------------
+		
+		String str = "Java";
+		
+		char data = str.charAt(3);
+		System.out.println(data);
+		
+output : a
+
+Note : if the specified index is not present , it threws "IndexOutOfBounds" Exception
+------------------------------------------------------------------------------------------------------------------------
+Capturing a part of String using : substring()
+----------------------------------------------------------------------------------------------------------------------
+		
+		String str = "Selenium Java";
+		
+		String data =  str.substring(9);
+		System.out.println(data);
+		
+output : Java
+----------------------------------------------------------------------------------------------------------------------
+Capturing a part of String using : substring()
+------------------------------------------------------------------------------------------------------------------------
+
+		String str = "Selenium Java";
+		
+		String data =  str.substring(9, 11);
+		System.out.println(data);
+
+output : Ja
+------------------------------------------------------------------------------------------------------------------------
+		
+		String str = "Selenium Java";
+		
+		String data =  str.substring(0, 8);
+		System.out.println(data);
+
+output : Selenium
+-----------------------------------------------------------------------------------------------------------------------
+substring()
+-----------------------------------------------------------------------------------------------------------------------
+		String str = "Create your Google Account";
+		
+		String data =  str.substring(str.length()-7);
+		System.out.println(data);
+----------------------------------------------------------------------------------------------------------------------
+compareTo()
+----------------------------------------------------------------------------------------------------------------------
+		String str1,str2;
+		
+		str1 = "A";
+		str2 = "A";
+		
+		int res = str2.compareTo(str1);
+		System.out.println(res);
+		
+		
+		str1 = "A";
+		str2 = "B";
+		
+		res = str2.compareTo(str1);
+		System.out.println(res);
+		
+		str1 = "B";
+		str2 = "A";
+		
+		res = str2.compareTo(str1);
+		System.out.println(res);
+------------------------------------------------------------------------------------------------------------------------
+compareToIgnoreCase()
+------------------------------------------------------------------------------------------------------------------------
+		
+		String str1,str2;
+		
+		str1 = "a";
+		str2 = "A";
+		
+		int res = str2.compareToIgnoreCase(str1);
+		System.out.println(res);
+
+-----------------------------------------------------------------------------------------------------------------------
+compareTo()
+-----------------------------------------------------------------------------------------------------------------------
+	
+		String str1,str2;
+		
+		str1 = "ABCx";
+		str2 = "ABCy";
+		
+		int res = str2.compareToIgnoreCase(str1);
+		System.out.println(res);
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+

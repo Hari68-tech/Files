@@ -1,0 +1,152 @@
+Script to select items from a DropDownList
+------------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://facebook.com");
+		driver.findElement(By.linkText("Create new account")).click();
+		
+		Select daylist = new Select(driver.findElement(By.id("day")));
+		daylist.selectByIndex(0);
+		
+		Select monthlist =  new Select(driver.findElement(By.id("month")));
+		monthlist.selectByValue("5");
+		
+		WebElement yearelement = driver.findElement(By.id("year"));		
+		Select yearlist = new Select(yearelement);
+		yearlist.selectByVisibleText("2000");
+------------------------------------------------------------------------------------------------------------------------
+Script to select "Books" in amazon.in category List
+------------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://amazon.in");
+		
+		Select cat = new Select(driver.findElement(By.id("searchDropdownBox")));
+		cat.selectByVisibleText("Books");
+-----------------------------------------------------------------------------------------------------------------------
+Script to check "Books" present in the Amazon Category DropDownList or not?
+-----------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://amazon.in");
+		
+		String item_tobe_check = "Books";
+		
+		Select cat = new Select(driver.findElement(By.id("searchDropdownBox")));
+		
+		try 
+		{
+			cat.selectByVisibleText(item_tobe_check);
+			System.out.println(item_tobe_check+" is present in the list, test pass");
+		} catch (Exception e) 
+		{
+			System.out.println(item_tobe_check+" is not present in the list, test fail");
+		}
+--------------------------------------------------------------------------------------------------------------------
+Script to check "Cars" present in the Amazon Category DropDownList or not?
+-------------------------------------------------------------------------------------------------------------------------
+
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://amazon.in");
+		
+		String item_tobe_check = "Cars";
+		
+		Select cat = new Select(driver.findElement(By.id("searchDropdownBox")));
+		
+		try 
+		{
+			cat.selectByVisibleText(item_tobe_check);
+			System.out.println(item_tobe_check+" is present in the list, test pass");
+		} catch (Exception e) 
+		{
+			System.out.println(item_tobe_check+" is not present in the list, test fail");
+		}
+----------------------------------------------------------------------------------------------------------------------
+Script to count no. of items present in Amazon.in Category List
+-------------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://amazon.in");	
+		
+		Select cat = new Select(driver.findElement(By.id("searchDropdownBox")));
+		List<WebElement> catlist = cat.getOptions();
+		
+		int itemcount =  catlist.size();
+		System.out.println(itemcount);
+-------------------------------------------------------------------------------------------------------------------------
+Script to print all items present in Amazon.in Category List
+-------------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://amazon.in");	
+		
+		Select cat = new Select(driver.findElement(By.id("searchDropdownBox")));
+		List<WebElement> catlist = cat.getOptions();
+		
+		for(int i=1;i<catlist.size();i++)
+		{
+			String catname = catlist.get(i).getText();
+			System.out.println(catname);
+		}
+		
+---------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+Variables
+----------------------------------------------------------------------------------------------------------------------
+		String name;
+		int age;
+		
+		name = "Richards";
+		age = 25;
+		
+		char gender = 'm';
+		
+		System.out.println("Hello Java");
+		
+		System.out.println(name);
+		System.out.println(age);
+		System.out.println(gender);
+-------------------------------------------------------------------------------------------------------------------------
+
+	
+	

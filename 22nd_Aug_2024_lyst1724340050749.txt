@@ -1,0 +1,168 @@
+Script to Enterm "FlyDate" while booking ticket in Flight Reservation Application
+------------------------------------------------------------------------------------------------------------------------
+		
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://flights.qedgetech.com");
+		driver.findElement(By.name("email")).sendKeys("sureshbabu.qedge@gmail.com");
+		driver.findElement(By.name("password")).sendKeys("demo");		
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		
+		driver.findElement(By.id("search-date")).sendKeys("10/15/2024");
+------------------------------------------------------------------------------------------------------------------------
+Script to Select "DOB" while Registering New Account in Flights Application by Operating Calendar
+------------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://flights.qedgetech.com");
+		driver.findElement(By.linkText("Register")).click();
+		
+		String dob = "18-Oct-1996";
+		String[] temp = dob.split("-");
+		
+		String dt = temp[0];
+		String month = temp[1];
+		String year = temp[2];
+		
+		driver.findElement(By.name("dob")).click();
+		
+		Select mlist = new Select(driver.findElement(By.className("ui-datepicker-month")));
+		mlist.selectByVisibleText(month);
+		
+		Select ylist = new Select(driver.findElement(By.className("ui-datepicker-year")));
+		ylist.selectByVisibleText(year);
+		
+		WebElement cal = driver.findElement(By.className("ui-datepicker-calendar"));
+		
+		List<WebElement> rows = cal.findElements(By.tagName("tr"));
+		for(int i=1;i<rows.size();i++)
+		{
+			List<WebElement> cols = rows.get(i).findElements(By.tagName("td"));
+			for(WebElement element : cols)
+			{
+				if(element.getText().equals(dt))
+				{
+					element.click();
+					break;
+				}
+			}
+		}
+-----------------------------------------------------------------------------------------------------------------------
+Script to Enter "FlyDate" while booking ticket in Flight Reservation Application By Operating Calendar
+-----------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("http://flights.qedgetech.com");
+		driver.findElement(By.name("email")).sendKeys("sureshbabu.qedge@gmail.com");
+		driver.findElement(By.name("password")).sendKeys("demo");		
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		
+		driver.findElement(By.id("search-date")).click();
+		
+		String flydate = "18-July-2032";
+		
+		String[] temp = flydate.split("-");
+		String dt = temp[0];
+		String month = temp[1];
+		String year = temp[2];
+		
+		
+		String calyear = driver.findElement(By.className("ui-datepicker-year")).getText();		
+		while(!calyear.equals(year))
+		{
+			driver.findElement(By.linkText("Next")).click();	
+			calyear = driver.findElement(By.className("ui-datepicker-year")).getText();
+		}
+		
+		String calmonth = driver.findElement(By.className("ui-datepicker-month")).getText();
+		while(!calmonth.equalsIgnoreCase(month))
+		{
+			driver.findElement(By.linkText("Next")).click();
+			calmonth = driver.findElement(By.className("ui-datepicker-month")).getText();
+		}
+		
+		WebElement cal = driver.findElement(By.className("ui-datepicker-calendar"));
+		
+		List<WebElement> rows = cal.findElements(By.tagName("tr"));
+		for(int i=1;i<rows.size();i++)
+		{
+			List<WebElement> cols = rows.get(i).findElements(By.tagName("td"));
+			for(WebElement element : cols)
+			{
+				if(element.getText().equals(dt))
+				{
+					element.click();
+					break;
+				}
+			}
+		}
+	}
+------------------------------------------------------------------------------------------------------------------------
+
+	Actions
+		.sendKeys()
+		.click()
+		.contextClick()
+		.doubleClick()
+		.moveToElement()
+		.dragAndDrop()
+		.build()
+		.perform()
+
+
+------------------------------------------------------------------------------------------------------------------------
+Script to automate "MoveToElement" and "RightClick" Mouse actions on a Element
+------------------------------------------------------------------------------------------------------------------------
+		
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("https://www.snapdeal.com");
+		
+		Actions act = new Actions(driver);
+		act.moveToElement(driver.findElement(By.linkText("Home & Kitchen")));
+		act.contextClick();
+		act.build().perform();
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

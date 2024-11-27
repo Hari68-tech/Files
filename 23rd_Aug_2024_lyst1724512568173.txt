@@ -1,0 +1,110 @@
+Script to handle iFrames and also mouse drag and drop operation
+-----------------------------------------------------------------------------------------------------------------------
+		
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("https://jqueryui.com/");
+		driver.findElement(By.linkText("Droppable")).click();
+		
+		driver.switchTo().frame(driver.findElement(By.className("demo-frame")));
+		WebElement srcelement,trgelement;
+		srcelement = driver.findElement(By.id("draggable"));
+		trgelement = driver.findElement(By.id("droppable"));
+		
+		Actions act = new Actions(driver);
+		act.dragAndDrop(srcelement, trgelement);
+		act.build().perform();	
+-----------------------------------------------------------------------------------------------------------------------
+Script to identify element inside iFrame
+-----------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("https://google.com");
+		
+		driver.switchTo().frame(driver.findElement(By.name("callout")));
+		driver.findElement(By.xpath("//button[contains(@aria-label,'signed')]")).click();
+-----------------------------------------------------------------------------------------------------------------------
+Script to capture current window id using : getWindowHandle()
+-----------------------------------------------------------------------------------------------------------------------
+		
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("https://gmail.com");		 
+		String current_window_id =  driver.getWindowHandle();
+		
+		System.out.println(current_window_id);
+
+------------------------------------------------------------------------------------------------------------------------
+Script to capture all browser window ids using : getwindowHandles()
+------------------------------------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("https://gmail.com");		
+		driver.findElement(By.linkText("Help")).click();
+		
+		Set<String> allwindows = driver.getWindowHandles();
+		System.out.println(allwindows);
+--------------------------------------------------------------------------------------------------------------------------
+Script to switch between multiple browser windows
+--------------------------------------------------------------------------------------------------------------------------
+System.setProperty("webdriver.chrome.driver", "chromedriver.exe");		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		
+		driver.get("https://gmail.com");		
+		driver.findElement(By.linkText("Help")).click();
+				
+		// code to seperate window ids
+		Set<String> allwindows = driver.getWindowHandles();
+		Object[] windows = allwindows.toArray();
+		String window1 = windows[0].toString();
+		String window2 = windows[1].toString();
+		
+		driver.switchTo().window(window2);
+		driver.findElement(By.linkText("Community")).click();
+		
+		driver.switchTo().window(window1);
+		driver.findElement(By.id("identifierId")).sendKeys("demo");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
